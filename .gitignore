@@ -1,0 +1,3 @@
+# 納品キットの生成物(顧客情報を含むためコミットしない)
+tools/kit-generator/output/
+tools/kit-generator/client_*.json

@@ -1,0 +1,14 @@
+{
+  "client_name": "サンプル商事",
+  "vendor": "【要判断: あなたの屋号/名前】",
+  "tone": "敬体。堅め。結論を冒頭に置く",
+  "skills": ["mail-triage", "mail-reply", "minutes", "weekly-report", "asset-review"],
+  "storage": {
+    "docs": "Google Drive/業務資産フォルダ",
+    "knowledge": "Notion/業務ナレッジ"
+  },
+  "forbidden": [
+    "顧客リストを外部サービスにアップロードする",
+    "経理フォルダ配下のファイルを変更する"
+  ]
+}
