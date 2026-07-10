@@ -1,0 +1,150 @@
+/*
+ * TNF Quote デザイントークン + コンポーネントスタイル。
+ * 方針(仕様 §6): 余白と書体にこだわった落ち着いた白基調 + アクセント1色。
+ * 色だけでなく文字でも状態を表す。3桁区切り。印刷=PDF一致を意識。
+ */
+
+:root {
+  --bg: #ffffff;
+  --surface: #fbfbfa;
+  --border: #e7e5e0;
+  --text: #1c1b19;
+  --text-muted: #6b6a66;
+  --accent: #2f6f5e;          /* 落ち着いたグリーンをアクセント1色に */
+  --accent-weak: #e8f1ee;
+  --danger: #b3261e;
+  --radius: 10px;
+  --gap: 16px;
+  --font: -apple-system, BlinkMacSystemFont, 'Hiragino Kaku Gothic ProN',
+          'Noto Sans JP', 'Segoe UI', Meiryo, sans-serif;
+
+  --tone-gray: #6b6a66;
+  --tone-blue: #2563a8;
+  --tone-green: #2f6f5e;
+  --tone-red: #b3261e;
+  --tone-amber: #b26a00;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17181a;
+    --surface: #1f2124;
+    --border: #34373b;
+    --text: #ececec;
+    --text-muted: #a0a2a6;
+    --accent: #59b399;
+    --accent-weak: #22322e;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- ボタン ---- */
+.btn {
+  font: inherit;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.btn:hover { border-color: var(--accent); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn--primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.btn--primary:hover { filter: brightness(1.05); }
+.btn--ghost { background: transparent; border-style: dashed; color: var(--text-muted); }
+.btn--chip { padding: 5px 10px; font-size: 13px; border-radius: 999px; }
+.btn--icon { padding: 4px 8px; border: none; background: transparent; color: var(--text-muted); }
+
+/* ---- 入力 ---- */
+.input {
+  font: inherit;
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+}
+.input:focus { outline: 2px solid var(--accent-weak); border-color: var(--accent); }
+.input--num { text-align: right; }
+.input--title { font-size: 20px; font-weight: 600; border: none; padding: 6px 0; }
+.input--title:focus { outline: none; border-bottom: 2px solid var(--accent); }
+
+/* ---- ステータスバッジ ---- */
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 10px; border-radius: 999px; font-size: 13px; font-weight: 600;
+  background: var(--surface); border: 1px solid var(--border);
+}
+.badge__dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.badge--gray { color: var(--tone-gray); }
+.badge--blue { color: var(--tone-blue); }
+.badge--green { color: var(--tone-green); }
+.badge--red { color: var(--tone-red); }
+.badge--amber { color: var(--tone-amber); }
+
+/* ---- 明細テーブル ---- */
+.items { width: 100%; border-collapse: collapse; margin: var(--gap) 0; }
+.items th {
+  text-align: left; font-size: 12px; color: var(--text-muted);
+  font-weight: 600; padding: 6px 8px; border-bottom: 1px solid var(--border);
+}
+.items td { padding: 6px 8px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.items__num { text-align: right; width: 120px; }
+.items__wh { text-align: center; width: 72px; }
+.items__total { font-variant-numeric: tabular-nums; font-weight: 600; }
+
+/* ---- 金額サマリー ---- */
+.money {
+  margin: var(--gap) 0 0; padding: 16px; border-radius: var(--radius);
+  background: var(--surface); border: 1px solid var(--border);
+  max-width: 360px; margin-left: auto;
+}
+.money__row { display: flex; justify-content: space-between; padding: 4px 0; }
+.money__row dt, .money__row dd { margin: 0; }
+.money__row dd { font-variant-numeric: tabular-nums; }
+.money__row--muted { color: var(--text-muted); font-size: 14px; }
+.money__row--withholding { color: var(--tone-red); }
+.money__row--total {
+  margin-top: 8px; padding-top: 10px; border-top: 2px solid var(--border);
+  font-size: 18px; font-weight: 700;
+}
+.money__row--total dd { color: var(--accent); }
+
+/* ---- 見積エディタ ---- */
+.editor { max-width: 900px; margin: 0 auto; padding: 24px; }
+.editor__presets { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0; }
+.editor__presets-label { color: var(--text-muted); font-size: 13px; }
+.editor__adjust { display: flex; gap: 24px; flex-wrap: wrap; align-items: end; margin: 8px 0; }
+.field { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--text-muted); }
+.field--check { flex-direction: row; align-items: center; gap: 8px; }
+.editor__errors { color: var(--danger); font-size: 14px; padding-left: 20px; }
+.editor__foot {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border);
+}
+.editor__hint { color: var(--text-muted); font-size: 14px; }
+
+/* ---- レスポンシブ(仕様 §8) ---- */
+@media (max-width: 640px) {
+  .editor { padding: 16px; }
+  .money { max-width: none; }
+  .items, .items thead, .items tbody, .items tr, .items td { display: block; }
+  .items thead { display: none; }
+  .items tr { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; padding: 8px; }
+  .items td { border: none; padding: 4px; }
+  .items__num, .items__wh { width: auto; text-align: left; }
+  .editor__foot { position: sticky; bottom: 0; background: var(--bg); }
+}

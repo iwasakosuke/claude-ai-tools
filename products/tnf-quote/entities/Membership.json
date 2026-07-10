@@ -1,0 +1,12 @@
+{
+  "name": "Membership",
+  "type": "object",
+  "description": "ユーザーと org の所属・権限。",
+  "properties": {
+    "org_id": { "type": "string", "description": "所属 org" },
+    "user_id": { "type": "string" },
+    "role": { "type": "string", "enum": ["owner", "admin", "member", "viewer"], "default": "member" },
+    "status": { "type": "string", "enum": ["active", "invited", "suspended"], "default": "invited" }
+  },
+  "required": ["org_id", "user_id", "role", "status"]
+}

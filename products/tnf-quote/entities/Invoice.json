@@ -1,0 +1,25 @@
+{
+  "name": "Invoice",
+  "type": "object",
+  "description": "請求書。Quote から複製生成し以後は独立。源泉徴収・インボイス項目を保持。",
+  "properties": {
+    "org_id": { "type": "string" },
+    "customer_id": { "type": "string" },
+    "quote_id": { "type": "string", "description": "元見積(任意)" },
+    "invoice_number": { "type": "string", "description": "サーバー採番(見積とは別採番)" },
+    "title": { "type": "string" },
+    "billing_type": { "type": "string", "enum": ["full", "deposit", "final"], "default": "full", "description": "全額/着手金/残金" },
+    "status": { "type": "string", "enum": ["draft", "issued", "paid", "overdue"], "default": "draft" },
+    "subtotal": { "type": "number", "default": 0 },
+    "discount": { "type": "number", "default": 0 },
+    "tax": { "type": "number", "default": 0 },
+    "withholding_tax": { "type": "number", "default": 0, "description": "源泉徴収税額(差引)" },
+    "total": { "type": "number", "default": 0, "description": "請求総額(源泉控除前)" },
+    "net_payable": { "type": "number", "default": 0, "description": "差引支払額(源泉控除後)" },
+    "due_date": { "type": "string", "format": "date" },
+    "issued_at": { "type": "string", "format": "date-time" },
+    "paid_at": { "type": "string", "format": "date-time" },
+    "paid_amount": { "type": "number", "default": 0, "description": "入金消込額" }
+  },
+  "required": ["org_id", "customer_id", "invoice_number", "title", "billing_type", "status"]
+}

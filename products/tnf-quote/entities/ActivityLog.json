@@ -1,0 +1,13 @@
+{
+  "name": "ActivityLog",
+  "type": "object",
+  "description": "監査ログ(Agency向け)。金額まわりの操作を追跡する。",
+  "properties": {
+    "org_id": { "type": "string" },
+    "actor_id": { "type": "string" },
+    "target": { "type": "string", "enum": ["quote", "invoice"] },
+    "action": { "type": "string", "description": "created / issued / decision / payment など" },
+    "meta": { "type": "object", "description": "変更内容のスナップショット" }
+  },
+  "required": ["org_id", "actor_id", "target", "action"]
+}

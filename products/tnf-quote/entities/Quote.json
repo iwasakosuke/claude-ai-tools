@@ -1,0 +1,22 @@
+{
+  "name": "Quote",
+  "type": "object",
+  "description": "見積。金額・番号・ステータスはサーバー確定。受注/失注は手動マーク。",
+  "properties": {
+    "org_id": { "type": "string" },
+    "customer_id": { "type": "string" },
+    "quote_number": { "type": "string", "description": "サーバー採番" },
+    "title": { "type": "string" },
+    "status": { "type": "string", "enum": ["draft", "sent", "accepted", "rejected", "expired"], "default": "draft" },
+    "subtotal": { "type": "number", "default": 0, "description": "税抜合計(サーバー計算)" },
+    "discount": { "type": "number", "default": 0 },
+    "tax": { "type": "number", "default": 0, "description": "消費税(サーバー計算)" },
+    "total": { "type": "number", "default": 0 },
+    "valid_until": { "type": "string", "format": "date" },
+    "notes": { "type": "string", "description": "制作条件・修正回数など" },
+    "owner_id": { "type": "string", "description": "担当メンバー" },
+    "sent_at": { "type": "string", "format": "date-time" },
+    "decided_at": { "type": "string", "format": "date-time" }
+  },
+  "required": ["org_id", "customer_id", "quote_number", "title", "status", "owner_id"]
+}

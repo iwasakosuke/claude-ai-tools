@@ -1,0 +1,25 @@
+{
+  "name": "Organization",
+  "type": "object",
+  "description": "テナント(会社/個人事業)。全業務データはこの org に属する。",
+  "properties": {
+    "name": { "type": "string", "description": "屋号・会社名(書類ヘッダ)" },
+    "logo_url": { "type": "string", "description": "ロゴ画像URL" },
+    "address": { "type": "string" },
+    "phone": { "type": "string" },
+    "email": { "type": "string" },
+    "invoice_reg_number": { "type": "string", "description": "適格請求書登録番号 (T+13桁)" },
+    "is_individual": { "type": "boolean", "default": false, "description": "個人事業主なら源泉徴収を既定ON" },
+    "bank_info": { "type": "string", "description": "振込先" },
+    "quote_prefix": { "type": "string", "default": "Q-" },
+    "quote_seq": { "type": "number", "default": 1, "description": "見積番号の次の連番" },
+    "invoice_prefix": { "type": "string", "default": "INV-" },
+    "invoice_seq": { "type": "number", "default": 1, "description": "請求番号の次の連番(別採番)" },
+    "default_tax_rate": { "type": "number", "default": 0.1 },
+    "default_valid_days": { "type": "number", "default": 30 },
+    "plan": { "type": "string", "enum": ["free", "solo", "studio", "agency"], "default": "free" },
+    "quote_count_this_month": { "type": "number", "default": 0 },
+    "invoice_count_this_month": { "type": "number", "default": 0 }
+  },
+  "required": ["name", "is_individual", "quote_prefix", "quote_seq", "invoice_prefix", "invoice_seq", "plan"]
+}

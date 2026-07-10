@@ -1,0 +1,17 @@
+{
+  "name": "InvoiceItem",
+  "type": "object",
+  "description": "請求明細。生成時に見積明細から複製し、以後は独立。",
+  "properties": {
+    "invoice_id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "quantity": { "type": "number", "default": 1 },
+    "unit_price": { "type": "number", "default": 0 },
+    "tax_rate": { "type": "number", "default": 0.1 },
+    "line_total": { "type": "number", "default": 0 },
+    "sort_order": { "type": "number", "default": 0 },
+    "withholding_eligible": { "type": "boolean", "default": true }
+  },
+  "required": ["invoice_id", "name", "quantity", "unit_price", "tax_rate", "sort_order"]
+}

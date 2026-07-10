@@ -1,0 +1,13 @@
+{
+  "name": "Template",
+  "type": "object",
+  "description": "制作向けの明細セット・定型文。呼び出して数字を入れるだけにする。",
+  "properties": {
+    "org_id": { "type": "string" },
+    "name": { "type": "string" },
+    "kind": { "type": "string", "enum": ["quote", "invoice"], "default": "quote" },
+    "items_json": { "type": "string", "description": "明細プリセットの JSON 文字列(name/quantity/unit_price/tax_rate/withholding_eligible の配列)" },
+    "default_notes": { "type": "string" }
+  },
+  "required": ["org_id", "name", "kind", "items_json"]
+}

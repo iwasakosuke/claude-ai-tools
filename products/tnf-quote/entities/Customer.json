@@ -1,0 +1,16 @@
+{
+  "name": "Customer",
+  "type": "object",
+  "description": "取引先。is_corporate で源泉徴収要否の自動判定に使う。",
+  "properties": {
+    "org_id": { "type": "string" },
+    "company_name": { "type": "string" },
+    "contact_name": { "type": "string" },
+    "email": { "type": "string" },
+    "phone": { "type": "string" },
+    "address": { "type": "string" },
+    "is_corporate": { "type": "boolean", "default": true, "description": "法人か。個人発行×法人相手で源泉対象になりうる。" },
+    "memo": { "type": "string" }
+  },
+  "required": ["org_id", "company_name", "is_corporate"]
+}
