@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0c0c0c;
+  --color-paper: #ffffff;
+  --color-accent: #ff6b3d;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-ink);
+  color: #ffffff;
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-ink);
+}
